@@ -26,7 +26,7 @@ int print_from_to(char *start, char *stop, char *except)
  * @params: the parameters
  * Return: the number of bytes printed
  */
-int print_rev(va_list az, params_r *params)
+int print_rev(va_list az, params_t *params)
 {
 	int length, summation = 0;
 	char *string = va_arg(az, char *);
@@ -49,7 +49,7 @@ int print_rev(va_list az, params_r *params)
  * @params: the parameters
  * Return: the number of bytes printed
  */
-int print_rot13(va_list az, params_r *params)
+int print_rot13(va_list az, params_t *params)
 {
 	int x, index, counter = 0;
 	char array[] =
