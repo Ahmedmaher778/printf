@@ -26,15 +26,15 @@ int (*get_specifier(char *s))(va_list az, params_r * params)
 		{"R", print_rot13},
 		{NULL, NULL}
 	};
-	int l = 0;
+	int i = 0;
 
-	while (specifiers[l].specifier)
+	while (specifiers[i].specifier)
 	{
-		if (*s == specifiers[l].specifier[0])
+		if (*s == specifiers[i].specifier[0])
 		{
-			return (specifiers[l].f);
+			return (specifiers[i].f);
 		}
-		l++;
+		i++;
 	}
 	return (NULL);
 }
@@ -46,8 +46,9 @@ int (*get_specifier(char *s))(va_list az, params_r * params)
  * @params: the parameters struct
  *
  * Return: the number of bytes printed
- */
-int get_print_func(char *s, va_list az, params_r *params)
+*/
+
+int get_print_func(char *s, va_list az, params_t *params)
 {
 	int (*f)(va_list, params_t *) = get_specifier(s);
 
@@ -64,29 +65,29 @@ int get_print_func(char *s, va_list az, params_r *params)
  * Return: if flag was valid
 */
 
-int get_flag(char *s, params_r *params)
+int get_flag(char *s, params_t *params)
 {
-	int l = 0;
+	int i = 0;
 
 	switch (*s)
 	{
 		case '+':
-			l = params->pl_flag = 1;
+			i = params->pl_flag = 1;
 			break;
 		case ' ':
-			l = params->sp_flag = 1;
+			i = params->sp_flag = 1;
 			break;
 		case '#':
-			l = params->hash_flag = 1;
+			i = params->hash_flag = 1;
 			break;
 		case '-':
-			l = params->m_flag = 1;
+			i = params->m_flag = 1;
 			break;
 		case '0':
-			l = params->z_flag = 1;
+			i = params->z_flag = 1;
 			break;
 	}
-	return (l);
+	return (i);
 }
 
 /**
@@ -97,20 +98,20 @@ int get_flag(char *s, params_r *params)
  * Return: if modifier was valid
 */
 
-int get_modifier(char *s, params_r *params)
+int get_modifier(char *s, params_t *params)
 {
-	int l = 0;
+	int i = 0;
 
 	switch (*s)
 	{
 	case 'g':
-		l = params->g_modifier = 1;
+		i = params->g_modifier = 1;
 		break;
 	case 'j':
-		l = params->j_modifier = 1;
+		i = params->j_modifier = 1;
 		break;
 	}
-	return (l);
+	return (i);
 }
 
 /**
@@ -122,7 +123,7 @@ int get_modifier(char *s, params_r *params)
  * Return: new pointer
 */
 
-char *get_width(char *s, params_r *params, va_list az)
+char *get_width(char *s, params_t *params, va_list az)
 {
 	int d = 0;
 
