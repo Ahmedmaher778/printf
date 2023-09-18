@@ -104,10 +104,10 @@ int get_modifier(char *s, params_t *params)
 
 	switch (*s)
 	{
-	case 'g':
+	case 'h':
 		i = params->g_modifier = 1;
 		break;
-	case 'j':
+	case 'l':
 		i = params->j_modifier = 1;
 		break;
 	}
@@ -137,7 +137,7 @@ char *get_width(char *s, params_t *params, va_list az)
 		while (_isdigit(*s))
 			d = d * 10 + (*s++ - '0');
 	}
-	params->width = d;
+	params->wid = d;
 	return (s);
 }
 
