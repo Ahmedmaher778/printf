@@ -6,7 +6,7 @@
  * @params: the parameters
  * Return: the printed number chars
  */
-int print_char(va_list az, params_r *params)
+int print_char(va_list az, params_t *params)
 {
 	char pad_character = ' ';
 	unsigned int pad_number = 1, summation = 0, character = va_arg(az, int);
@@ -26,7 +26,7 @@ int print_char(va_list az, params_r *params)
  * @params: the parameters
  * Return: the printed number chars
  */
-int print_int(va_list az, params_r *params)
+int print_int(va_list az, params_t *params)
 {
 	long len;
 
@@ -45,7 +45,7 @@ int print_int(va_list az, params_r *params)
  * @params: the parameters
  * Return: the printed number chars
  */
-int print_string(va_list az, params_r *params)
+int print_string(va_list az, params_t *params)
 {
 	char *string = va_arg(az, char *), pad_character = ' ';
 	unsigned int pad = 0, summation = 0, x = 0, y;
@@ -86,7 +86,7 @@ int print_string(va_list az, params_r *params)
  * @params: the parameters
  * Return: the printed number chars
  */
-int print_percent(va_list az, params_r *params)
+int print_percent(va_list az, params_t *params)
 {
 	(void)az;
 	(void)params;
@@ -99,7 +99,7 @@ int print_percent(va_list az, params_r *params)
  * @params: the parameters
  * Return: the printed number chars
  */
-int print_S(va_list az, params_r *params)
+int print_S(va_list az, params_t *params)
 {
 	char *string = va_arg(az, char *);
 	char *hex;

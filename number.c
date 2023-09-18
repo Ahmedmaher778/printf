@@ -8,7 +8,7 @@
  * @params: the paramater
  * Return: a string
  */
-char *convert(long int num, int base, int flags, params_r *params)
+char *convert(long int num, int base, int flags, params_t *params)
 {
 	static char *arr;
 	static char buffer[50];
@@ -42,7 +42,7 @@ char *convert(long int num, int base, int flags, params_r *params)
  * @params: the parameters
  * Return: printed bytes
  */
-int print_unsigned(va_list az, params_r *params)
+int print_unsigned(va_list az, params_t *params)
 {
 	unsigned long x;
 
@@ -63,7 +63,7 @@ int print_unsigned(va_list az, params_r *params)
  * @params: the parameters
  * Return: printed bytes
  */
-int print_address(va_list az, params_r *params)
+int print_address(va_list az, params_t *params)
 {
 	unsigned long int number = va_arg(az, unsigned long int);
 	char *string;
