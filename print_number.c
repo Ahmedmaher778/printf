@@ -21,11 +21,11 @@ int _isdigit(int x)
 
 int _strlen(char *s)
 {
-	int l = 0;
+	int i = 0;
 
 	while (*s++)
-		l++;
-	return (l);
+		i++;
+	return (i);
 }
 
 /**
@@ -36,9 +36,9 @@ int _strlen(char *s)
  * Return: chars printed
 */
 
-int print_number(char *str, params_r *params)
+int print_number(char *str, params_t *params)
 {
-	unsigned int l = _strlen(str);
+	unsigned int i = _strlen(str);
 	int neg = (!params->unsgn && *str == '-');
 
 	if (!params->precision && *str == '0' && !str[1])
@@ -46,10 +46,10 @@ int print_number(char *str, params_r *params)
 	if (neg)
 	{
 		str++;
-		l--;
+		i--;
 	}
 	if (params->precision != UINT_MAX)
-		while (l++ < params->precision)
+		while (i++ < params->precision)
 			*--str = '0';
 	if (neg)
 		*--str = '-';
@@ -68,21 +68,21 @@ int print_number(char *str, params_r *params)
  * Return: chars printed
 */
 
-int print_number_right_shift(char *str, params_r *params)
+int print_number_right_shift(char *str, params_t *params)
 {
-	unsgned int v = 0, neg, neg2, l = _strlen(str);
+	unsgned int v = 0, neg, neg2, i = _strlen(str);
 	char pad_char = ' ';
 
 	if (params->z_flag && !params->m_flag)
 		pad_char = '0';
 	neg = neg2 = (!params->unsgn && *str == '-');
-	if (neg && l < params->wid && pad_char == '0' && !params->m_flag)
+	if (neg && i < params->wid && pad_char == '0' && !params->m_flag)
 		str++;
 	else
 		neg = 0;
-	if ((params->plus_flag && !neg2) ||
+	if ((params->pl_flag && !neg2) ||
 		(!params->pl_flag && params->sp_flag && !neg2))
-		l++;
+		i++;
 	if (neg && pad_char == '0')
 		v += _putchar('-');
 	if (params->pl_flag && !neg2 && pad_char == '0' && !params->unsgn)
@@ -90,7 +90,7 @@ int print_number_right_shift(char *str, params_r *params)
 	else if (!params->pl_flag && params->sp_flag && !neg2 &&
 		!params->unsgn && params->z_flag)
 		v += _putchar(' ');
-	while (l++ < params->wid)
+	while (i++ < params->wid)
 		v += _putchar(pad_char);
 	if (neg && pad_char == ' ')
 		v += _putchar('-');
@@ -111,25 +111,25 @@ int print_number_right_shift(char *str, params_r *params)
  * Return: chars printed
 */
 
-int print_number_left_shift(char *str, params_r *params)
+int print_number_left_shift(char *str, params_t *params)
 {
-	unsigned int v = 0, neg, neg2, l = _strlen(str);
+	unsigned int v = 0, neg, neg2, i = _strlen(str);
 	char pad_char = ' ';
 
 	if (params->z_flag && !params->m_flag)
 		pad_char = '0';
 	neg = neg2 = (!params->unsgn && *str == '-');
-	if (neg && l < params->wid && pad_char == '0' && !params->m_flag)
+	if (neg && i < params->wid && pad_char == '0' && !params->m_flag)
 		str++;
 	else
 		neg = 0;
 
 	if (params->pl_flag && !neg2 && !params->unsgn)
-		v += _putchar('+'), l++;
+		v += _putchar('+'), i++;
 	else if (params->sp_flag && !neg2 && !params->unsgn)
-		v += _putchar(' '), l++;
+		v += _putchar(' '), i++;
 	v += _puts(str);
-	while (l++ < params->wid)
+	while (i++ < params->wid)
 		v += _putchar(pad_char);
 	return (v);
 }
