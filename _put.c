@@ -18,24 +18,24 @@ int _puts(char *str)
 
 /**
  * _putchar - writes the character c to stdout
- * @x: character to print
+ * @c: character to print
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
 */
 
-int _putchar(int x)
+int _putchar(int c)
 {
-	static int i;
+	static int l;
 	static char buf[OUTPUT_BUF_SIZE];
 
-	if (x == BUF_FLUSH || i >= OUTPUT_BUF_SIZE)
+	if (c == BUF_FLUSH || l >= OUTPUT_BUF_SIZE)
 	{
-		write(1, buf, i);
-		i = 0;
+		write(1, buf, l);
+		l = 0;
 	}
-	if (x != BUF_FLUSH)
-		buf[i++] = x;
+	if (c != BUF_FLUSH)
+		buf[l++] = c;
 	return (1);
 }
 
