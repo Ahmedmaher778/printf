@@ -1,80 +1,77 @@
 #include "main.h"
 
 /**
- * print_from_to - prints a range of char addresses
- * @start: starting address
- * @stop: stopping address
- * @except: except address
- *
- * Return: number bytes printed
+ * print_from_to - function prints a range of char
+ * @start: the beginning address
+ * @stop: the stop address
+ * @except: the excepted address
+ * Return: the number of bytes printed
  */
 int print_from_to(char *start, char *stop, char *except)
 {
-	int sum = 0;
+	int summation = 0;
 
 	while (start <= stop)
 	{
 		if (start != except)
-			sum += _putchar(*start);
+			summation += _putchar(*start);
 		start++;
 	}
-	return (sum);
+	return (summation);
 }
 
 /**
- * print_rev - prints string in reverse
- * @ap: string
- * @params: the parameters struct
- *
- * Return: number bytes printed
+ * print_rev - function prints in reverse string
+ * @ap: is a string
+ * @params: the parameters
+ * Return: the number of bytes printed
  */
 int print_rev(va_list ap, params_t *params)
 {
-	int len, sum = 0;
-	char *str = va_arg(ap, char *);
+	int length, summation = 0;
+	char *string = va_arg(ap, char *);
 	(void)params;
 
-	if (str)
+	if (string)
 	{
-		for (len = 0; *str; str++)
-			len++;
-		str--;
-		for (; len > 0; len--, str--)
-			sum += _putchar(*str);
+		for (length = 0; *string; string++)
+			length++;
+		string--;
+		for (; length > 0; length--, string--)
+			summation += _putchar(*string);
 	}
-	return (sum);
+	return (summation);
 }
 
 /**
- * print_rot13 - prints string in rot13
- * @ap: string
- * @params: the parameters struct
- *
- * Return: number bytes printed
+ * print_rot13 - function prints string
+ * @ap: is a string
+ * @params: the parameters
+ * Return: the number of bytes printed
  */
 int print_rot13(va_list ap, params_t *params)
 {
-	int i, index;
-	int count = 0;
-	char arr[] =
+	int x, i;
+	int counter = 0;
+	char array[] =
 		"NOPQRSTUVWXYZABCDEFGHIJKLM      nopqrstuvwxyzabcdefghijklm";
 	char *a = va_arg(ap, char *);
 	(void)params;
 
+	x = 0;
 	i = 0;
-	index = 0;
-	while (a[i])
+	while (a[x])
 	{
-		if ((a[i] >= 'A' && a[i] <= 'Z')
-		    || (a[i] >= 'a' && a[i] <= 'z'))
+		if ((a[x] >= 'A' && a[x] <= 'Z')
+		    || (a[x] >= 'a' && a[x] <= 'z'))
 		{
-			index = a[i] - 65;
-			count += _putchar(arr[index]);
+			i = a[x] - 65;
+			counter += _putchar(array[i]);
 		}
 		else
-			count += _putchar(a[i]);
-		i++;
+			counter += _putchar(a[x]);
+		x++;
 	}
-	return (count);
+	return (counter);
 }
 
