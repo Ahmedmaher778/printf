@@ -6,7 +6,7 @@
  * @params:  parameters
  * Return: the printed bytes
  */
-int print_hex(va_list az, params_r *params)
+int print_hex(va_list az, params_t *params)
 {
 	unsigned long len;
 	int y = 0;
@@ -35,7 +35,7 @@ int print_hex(va_list az, params_r *params)
  * @params: the parameters
  * Return: the printed bytes
  */
-int print_HEX(va_list az, params_r *params)
+int print_HEX(va_list az, params_t *params)
 {
 	unsigned long len;
 	int y = 0;
@@ -63,7 +63,7 @@ int print_HEX(va_list az, params_r *params)
  * @params: the parameters
  * Return: the printed bytes
  */
-int print_binary(va_list az, params_r *params)
+int print_binary(va_list az, params_t *params)
 {
 	unsigned int num = va_arg(az, unsigned int);
 	char *string = convert(num, 2, CONVERT_UNSIGNED, params);
@@ -81,7 +81,7 @@ int print_binary(va_list az, params_r *params)
  * @params: the parameters
  * Return: the printed bytes
  */
-int print_octal(va_list az, params_r *params)
+int print_octal(va_list az, params_t *params)
 {
 	unsigned long len;
 	char *string;

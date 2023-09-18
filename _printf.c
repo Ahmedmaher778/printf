@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 	int summation = 0;
 	char *b, *beginning;
 	va_list az;
-	params_r params = PARAMS_INIT;
+	params_t params = PARAMS_INIT;
 
 	va_start(az, format);
 
