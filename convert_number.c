@@ -9,7 +9,7 @@
 int print_hex(va_list ap, params_t *params)
 {
 	unsigned long longLen;
-	int x = 0;
+	int y = 0;
 	char *string;
 
 	if (params->l_modifier)
@@ -26,7 +26,7 @@ int print_hex(va_list ap, params_t *params)
 		*--string = '0';
 	}
 	params->unsign = 1;
-	return (x += print_number(string, params));
+	return (y += print_number(string, params));
 }
 
 /**
