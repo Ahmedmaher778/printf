@@ -3,13 +3,12 @@
 /**
  * get_specifier - finds the format func
  * @s: format string
- *
  * Return: number of bytes printed
 */
 
-int (*get_specifier(char *s))(va_list az, params_r * params)
+int (*get_specifier(char *s))(va_list ap, params_t *params)
 {
-	specifier_r specifiers[] = {
+	specifier_t specifiers[] = {
 		{"c", print_char},
 		{"d", print_int},
 		{"i", print_int},
@@ -26,15 +25,15 @@ int (*get_specifier(char *s))(va_list az, params_r * params)
 		{"R", print_rot13},
 		{NULL, NULL}
 	};
-	int i = 0;
+	int l = 0;
 
-	while (specifiers[i].specifier)
+	while (specifiers[l].specifier)
 	{
-		if (*s == specifiers[i].specifier[0])
+		if (*s == specifiers[l].specifier[0])
 		{
-			return (specifiers[i].f);
+			return (specifiers[l].f);
 		}
-		i++;
+		l++;
 	}
 	return (NULL);
 }
@@ -42,18 +41,17 @@ int (*get_specifier(char *s))(va_list az, params_r * params)
 /**
  * get_print_func - finds the format func
  * @s: format string
- * @az: argument pointer
+ * @ap: argument pointer
  * @params: the parameters struct
- *
  * Return: the number of bytes printed
 */
 
-int get_print_func(char *s, va_list az, params_t *params)
+int get_print_func(char *s, va_list ap, params_t *params)
 {
 	int (*f)(va_list, params_t *) = get_specifier(s);
 
 	if (f)
-		return (f(az, params));
+		return (f(ap, params));
 	return (0);
 }
 
@@ -61,75 +59,72 @@ int get_print_func(char *s, va_list az, params_t *params)
  * get_flag - finds the flag func
  * @s: format string
  * @params: parameters struct
- *
  * Return: if flag was valid
 */
 
 int get_flag(char *s, params_t *params)
 {
-	int i = 0;
+	int l = 0;
 
 	switch (*s)
 	{
-		case '+':
-			i = params->pl_flag = 1;
-			break;
-		case ' ':
-			i = params->sp_flag = 1;
-			break;
 		case '#':
-			i = params->hash_flag = 1;
-			break;
-		case '-':
-			i = params->m_flag = 1;
+			l = params->hashtag_flag = 1;
 			break;
 		case '0':
-			i = params->z_flag = 1;
+			l = params->zero_flag = 1;
+			break;
+		case '+':
+			l = params->plus_flag = 1;
+			break;
+		case '-':
+			l = params->minus_flag = 1;
+			break;
+		case ' ':
+			l = params->space_flag = 1;
 			break;
 	}
-	return (i);
+	return (l);
 }
 
 /**
  * get_modifier - finds the modifier func
  * @s: format string
  * @params: parameters struct
- *
  * Return: if modifier was valid
 */
 
 int get_modifier(char *s, params_t *params)
 {
-	int i = 0;
+	int l = 0;
 
 	switch (*s)
 	{
-	case 'h':
-		i = params->h_modifier = 1;
-		break;
 	case 'l':
-		i = params->l_modifier = 1;
+		l = params->l_modifier = 1;
+		break;
+	case 'h':
+		l = params->h_modifier = 1;
 		break;
 	}
-	return (i);
+	return (l);
 }
 
 /**
  * get_width - gets the width from the format string
  * @s: format string
  * @params: parameters struct
- * @az: argument pointer
- *
+ * @ap: argument pointer
  * Return: new pointer
 */
 
-char *get_width(char *s, params_t *params, va_list az)
+char *get_width(char *s, params_t *params, va_list ap)
 {
 	int d = 0;
 
 	if (*s == '*')
 	{
-		d = va_arg(az, int);
+		d = va_arg(ap, int);
 		s++;
 	}
 	else
