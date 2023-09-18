@@ -19,11 +19,11 @@ int _isdigit(int c)
 
 int _strlen(char *s)
 {
-	int l = 0;
+	int i = 0;
 
 	while (*s++)
-		l++;
-	return (l);
+		i++;
+	return (i);
 }
 
 /**
@@ -35,7 +35,7 @@ int _strlen(char *s)
 
 int print_number(char *str, params_t *params)
 {
-	unsigned int l = _strlen(str);
+	unsigned int i = _strlen(str);
 	int neg = (!params->unsign && *str == '-');
 
 	if (!params->precision && *str == '0' && !str[1])
@@ -43,10 +43,10 @@ int print_number(char *str, params_t *params)
 	if (neg)
 	{
 		str++;
-		l--;
+		i--;
 	}
 	if (params->precision != UINT_MAX)
-		while (l++ < params->precision)
+		while (i++ < params->precision)
 			*--str = '0';
 	if (neg)
 		*--str = '-';
@@ -66,19 +66,19 @@ int print_number(char *str, params_t *params)
 
 int print_number_right_shift(char *str, params_t *params)
 {
-	unsgned int v = 0, neg, neg2, l = _strlen(str);
+	unsgned int v = 0, neg, neg2, i = _strlen(str);
 	char pad_char = ' ';
 
 	if (params->zero_flag && !params->minus_flag)
 		pad_char = '0';
 	neg = neg2 = (!params->unsign && *str == '-');
-	if (neg && l < params->width && pad_char == '0' && !params->minus_flag)
+	if (neg && i < params->width && pad_char == '0' && !params->minus_flag)
 		str++;
 	else
 		neg = 0;
 	if ((params->plus_flag && !neg2) ||
 		(!params->plus_flag && params->space_flag && !neg2))
-		l++;
+		i++;
 	if (neg && pad_char == '0')
 		v += _putchar('-');
 	if (params->plus_flag && !neg2 && pad_char == '0' && !params->unsign)
@@ -108,25 +108,24 @@ int print_number_right_shift(char *str, params_t *params)
 
 int print_number_left_shift(char *str, params_t *params)
 {
-	unsigned int v = 0, neg, neg2, l = _strlen(str);
+	unsigned int v = 0, neg, neg2, i = _strlen(str);
 	char pad_char = ' ';
 
 	if (params->zero_flag && !params->minus_flag)
 		pad_char = '0';
 	neg = neg2 = (!params->unsign && *str == '-');
-	if (neg && l < params->width && pad_char == '0' && !params->minus_flag)
+	if (neg && i < params->width && pad_char == '0' && !params->minus_flag)
 		str++;
 	else
 		neg = 0;
 
 	if (params->plus_flag && !neg2 && !params->unsign)
-		v += _putchar('+'), l++;
+		v += _putchar('+'), i++;
 	else if (params->space_flag && !neg2 && !params->unsign)
-		v += _putchar(' '), l++;
+		v += _putchar(' '), i++;
 	v += _puts(str);
-	while (l++ < params->width)
+	while (i++ < params->width)
 		v += _putchar(pad_char);
 	return (v);
 }
-
 
