@@ -13,7 +13,7 @@ int print_char(va_list az, params_t *params)
 
 	if (params->m_flag)
 		summation += _putchar(character);
-	while (pad_number++ < params->wid)
+	while (pad_number++ < params->width)
 		summation += _putchar(pad_character);
 	if (!params->m_flag)
 		summation += _putchar(character);
@@ -30,9 +30,9 @@ int print_int(va_list az, params_t *params)
 {
 	long len;
 
-	if (params->j_modifier)
+	if (params->l_modifier)
 		len = va_arg(az, long);
-	else if (params->g_modifier)
+	else if (params->h_modifier)
 		len = (short int)va_arg(az, int);
 	else
 		len = (int)va_arg(az, int);
@@ -67,7 +67,7 @@ int print_string(va_list az, params_t *params)
 		else
 			summation += _puts(string);
 	}
-	while (y++ < params->wid)
+	while (y++ < params->width)
 		summation += _putchar(pad_character);
 	if (!params->m_flag)
 	{
