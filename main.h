@@ -29,11 +29,11 @@
  * @z_flag: on if _flag specified
  * @m_flag: on if _flag specified
  *
- * @wid: field width specified
+ * @width: field width specified
  * @precision: field precision specified
  *
- * @g_modifier: on if g_modifier is specified
- * @j_modifier: on if j_modifier is specified
+ * @h_modifier: on if h_modifier is specified
+ * @l_modifier: on if l_modifier is specified
  *
  */
 typedef struct parameters
@@ -46,11 +46,11 @@ typedef struct parameters
 	unsigned int z_flag		: 1;
 	unsigned int m_flag		: 1;
 
-	unsigned int wid;
+	unsigned int width;
 	unsigned int precision;
 
-	unsigned int g_modifier		: 1;
-	unsigned int j_modifier		: 1;
+	unsigned int h_modifier		: 1;
+	unsigned int l_modifier		: 1;
 } params_t;
 
 /**
@@ -110,7 +110,7 @@ int print_number_left_shift(char *str, params_t *params);
 void init_params(params_t *params, va_list az);
 
 /* string_fields.c modoule */
-char *get_precision(char *b, params_t *params, va_list az);
+char *get_precision(char *p, params_t *params, va_list az);
 
 /* _prinf.c module */
 int _printf(const char *format, ...);
