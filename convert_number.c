@@ -12,9 +12,9 @@ int print_hex(va_list az, params_t *params)
 	int y = 0;
 	char *string;
 
-	if (params->j_modifier)
+	if (params->l_modifier)
 		len = (unsigned long)va_arg(az, unsigned long);
-	else if (params->g_modifier)
+	else if (params->h_modifier)
 		len = (unsigned short int)va_arg(az, unsigned int);
 	else
 		len = (unsigned int)va_arg(az, unsigned int);
@@ -41,9 +41,9 @@ int print_HEX(va_list az, params_t *params)
 	int y = 0;
 	char *string;
 
-	if (params->j_modifier)
+	if (params->l_modifier)
 		len = (unsigned long)va_arg(az, unsigned long);
-	else if (params->g_modifier)
+	else if (params->h_modifier)
 		len = (unsigned short int)va_arg(az, unsigned int);
 	else
 		len = (unsigned int)va_arg(az, unsigned int);
@@ -87,9 +87,9 @@ int print_octal(va_list az, params_t *params)
 	char *string;
 	int y = 0;
 
-	if (params->j_modifier)
+	if (params->l_modifier)
 		len = (unsigned long)va_arg(az, unsigned long);
-	else if (params->g_modifier)
+	else if (params->h_modifier)
 		len = (unsigned short int)va_arg(az, unsigned int);
 	else
 		len = (unsigned int)va_arg(az, unsigned int);
