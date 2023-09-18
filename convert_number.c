@@ -1,102 +1,106 @@
 #include "main.h"
 
 /**
- * print_hex - function prints numbers unsigned hex (lowerCase)
- * @ap: the pointer argument
- * @params:  parameters
- * Return: the printed bytes
+ * print_hex - prints unsigned hex numbers in lowercase
+ * @ap: the argument pointer
+ * @params: the parameters struct
+ *
+ * Return: bytes printed
  */
 int print_hex(va_list ap, params_t *params)
 {
-	unsigned long longLen;
+	unsigned long l;
 	int c = 0;
-	char *string;
+	char *str;
 
 	if (params->l_modifier)
-		longLen = (unsigned long)va_arg(ap, unsigned long);
+		l = (unsigned long)va_arg(ap, unsigned long);
 	else if (params->h_modifier)
-		longLen = (unsigned short int)va_arg(ap, unsigned int);
+		l = (unsigned short int)va_arg(ap, unsigned int);
 	else
-		longLen = (unsigned int)va_arg(ap, unsigned int);
+		l = (unsigned int)va_arg(ap, unsigned int);
 
-	string = convert(longLen, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
-	if (params->hashtag_flag && longLen)
+	str = convert(l, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
+	if (params->hashtag_flag && l)
 	{
-		*--string = 'x';
-		*--string = '0';
+		*--str = 'x';
+		*--str = '0';
 	}
 	params->unsign = 1;
-	return (c += print_number(string, params));
+	return (c += print_number(str, params));
 }
 
 /**
- * print_HEX - function prints numbers unsigned hex (upperCase)
- * @ap: the pointer argument
- * @params: the parameters
- * Return: the printed bytes
+ * print_HEX - prints unsigned hex numbers in uppercase
+ * @ap: the argument pointer
+ * @params: the parameters struct
+ *
+ * Return: bytes printed
  */
 int print_HEX(va_list ap, params_t *params)
 {
-	unsigned long longLen;
+	unsigned long l;
 	int c = 0;
-	char *string;
+	char *str;
 
 	if (params->l_modifier)
-		longLen = (unsigned long)va_arg(ap, unsigned long);
+		l = (unsigned long)va_arg(ap, unsigned long);
 	else if (params->h_modifier)
-		longLen = (unsigned short int)va_arg(ap, unsigned int);
+		l = (unsigned short int)va_arg(ap, unsigned int);
 	else
-		longLen = (unsigned int)va_arg(ap, unsigned int);
+		l = (unsigned int)va_arg(ap, unsigned int);
 
-	string = convert(longLen, 16, CONVERT_UNSIGNED, params);
-	if (params->hashtag_flag && longLen)
+	str = convert(l, 16, CONVERT_UNSIGNED, params);
+	if (params->hashtag_flag && l)
 	{
-		*--string = 'X';
-		*--string = '0';
+		*--str = 'X';
+		*--str = '0';
 	}
 	params->unsign = 1;
-	return (x += print_number(string, params));
+	return (c += print_number(str, params));
 }
 /**
- * print_octal - function prints numbers in unsigned octal
- * @ap: the pointer argument
- * @params: the parameters
- * Return: the printed bytes
+ * print_binary - prints unsigned binary number
+ * @ap: the argument pointer
+ * @params: the parameters struct
+ *
+ * Return: bytes printed
  */
 int print_binary(va_list ap, params_t *params)
 {
-	unsigned int num = va_arg(ap, unsigned int);
-	char *string = convert(num, 2, CONVERT_UNSIGNED, params);
+	unsigned int n = va_arg(ap, unsigned int);
+	char *str = convert(n, 2, CONVERT_UNSIGNED, params);
 	int c = 0;
 
-	if (params->hashtag_flag && num)
-		*--string = '0';
+	if (params->hashtag_flag && n)
+		*--str = '0';
 	params->unsign = 1;
-	return (c += print_number(string, params));
+	return (c += print_number(str, params));
 }
 
 /**
- * print_octal - function prints numbers in unsigned octal
- * @ap: the pointer argument
- * @params: the parameters
- * Return: the printed bytes
+ * print_octal - prints unsigned octal numbers
+ * @ap: the argument pointer
+ * @params: the parameters struct
+ *
+ * Return: bytes printed
  */
 int print_octal(va_list ap, params_t *params)
 {
-	unsigned long longLen;
-	char *string;
+	unsigned long l;
+	char *str;
 	int c = 0;
 
 	if (params->l_modifier)
-		longLen = (unsigned long)va_arg(ap, unsigned long);
+		l = (unsigned long)va_arg(ap, unsigned long);
 	else if (params->h_modifier)
-		longLen = (unsigned short int)va_arg(ap, unsigned int);
+		l = (unsigned short int)va_arg(ap, unsigned int);
 	else
-		longLen = (unsigned int)va_arg(ap, unsigned int);
-	string = convert(longLen, 8, CONVERT_UNSIGNED, params);
+		l = (unsigned int)va_arg(ap, unsigned int);
+	str = convert(l, 8, CONVERT_UNSIGNED, params);
 
-	if (params->hashtag_flag && longLen)
-		*--string = '0';
+	if (params->hashtag_flag && l)
+		*--str = '0';
 	params->unsign = 1;
-	return (c += print_number(string, params));
+	return (c += print_number(str, params));
 }
