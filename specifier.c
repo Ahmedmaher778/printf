@@ -25,15 +25,15 @@ int (*get_specifier(char *s))(va_list ap, params_t *params)
 		{"R", print_rot13},
 		{NULL, NULL}
 	};
-	int l = 0;
+	int i = 0;
 
-	while (specifiers[l].specifier)
+	while (specifiers[i].specifier)
 	{
-		if (*s == specifiers[l].specifier[0])
+		if (*s == specifiers[i].specifier[0])
 		{
-			return (specifiers[l].f);
+			return (specifiers[i].f);
 		}
-		l++;
+		i++;
 	}
 	return (NULL);
 }
@@ -64,27 +64,27 @@ int get_print_func(char *s, va_list ap, params_t *params)
 
 int get_flag(char *s, params_t *params)
 {
-	int l = 0;
+	int i = 0;
 
 	switch (*s)
 	{
 		case '#':
-			l = params->hashtag_flag = 1;
+			i = params->hashtag_flag = 1;
 			break;
 		case '0':
-			l = params->zero_flag = 1;
+			i = params->zero_flag = 1;
 			break;
 		case '+':
-			l = params->plus_flag = 1;
+			i = params->plus_flag = 1;
 			break;
 		case '-':
-			l = params->minus_flag = 1;
+			i = params->minus_flag = 1;
 			break;
 		case ' ':
-			l = params->space_flag = 1;
+			i = params->space_flag = 1;
 			break;
 	}
-	return (l);
+	return (i);
 }
 
 /**
@@ -96,18 +96,18 @@ int get_flag(char *s, params_t *params)
 
 int get_modifier(char *s, params_t *params)
 {
-	int l = 0;
+	int i = 0;
 
 	switch (*s)
 	{
 	case 'l':
-		l = params->l_modifier = 1;
+		i = params->l_modifier = 1;
 		break;
 	case 'h':
-		l = params->h_modifier = 1;
+		i = params->h_modifier = 1;
 		break;
 	}
-	return (l);
+	return (i);
 }
 
 /**
