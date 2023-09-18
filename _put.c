@@ -26,16 +26,16 @@ int _puts(char *str)
 
 int _putchar(int x)
 {
-	static int l;
+	static int i;
 	static char buf[OUTPUT_BUF_SIZE];
 
-	if (x == BUF_FLUSH || l >= OUTPUT_BUF_SIZE)
+	if (x == BUF_FLUSH || i >= OUTPUT_BUF_SIZE)
 	{
-		write(1, buf, l);
-		l = 0;
+		write(1, buf, i);
+		i = 0;
 	}
 	if (x != BUF_FLUSH)
-		buf[l++] = x;
+		buf[i++] = x;
 	return (1);
 }
 
