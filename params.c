@@ -18,11 +18,11 @@ void init_params(params_t *params, va_list az)
 	params->z_flag = 0;
 	params->m_flag = 0;
 
-	params->wid = 0;
+	params->width = 0;
 	params->precision = UINT_MAX;
 
-	params->g_modifier = 0;
-	params->j_modifier = 0;
+	params->h_modifier = 0;
+	params->l_modifier = 0;
 	(void)az;
 }
 
