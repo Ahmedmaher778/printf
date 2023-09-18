@@ -8,7 +8,7 @@
  * Return: void
 */
 
-void init_params(params_r *params, va_list az)
+void init_params(params_t *params, va_list az)
 {
 	params->unsgn = 0;
 
