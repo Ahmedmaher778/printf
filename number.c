@@ -1,12 +1,10 @@
 #include "main.h"
 
 /**
- * convert - function to convert
- * @num: is a number
- * @base: the base
- * @flags: the flags of argument
- * @params: the paramater
- * Return: a string
+ * print_unsigned - function prints integer unsigned numbers
+ * @ap: pointer argument
+ * @params: the parameters
+ * Return: printed bytes
  */
 char *convert(long int num, int base, int flags, params_t *params)
 {
@@ -38,34 +36,35 @@ char *convert(long int num, int base, int flags, params_t *params)
 
 /**
  * print_unsigned - function prints integer unsigned numbers
- * @az: pointer argument
+ * @ap: pointer argument
  * @params: the parameters
  * Return: printed bytes
  */
-int print_unsigned(va_list az, params_t *params)
+int print_unsigned(va_list ap, params_t *params)
 {
-	unsigned long x;
+	unsigned long longLen;
 
 	if (params->l_modifier)
-		x = (unsigned long)va_arg(az, unsigned long);
+		longLen = (unsigned long)va_arg(ap, unsigned long);
 	else if (params->h_modifier)
-		x = (unsigned short int)va_arg(az, unsigned int);
+		longLen = (unsigned short int)va_arg(ap, unsigned int);
 	else
-		x = (unsigned int)va_arg(az, unsigned int);
-	params->unsgn = 1;
-	return (print_number(convert(x, 10, CONVERT_UNSIGNED, params), params));
+		longLen = (unsigned int)va_arg(ap, unsigned int);
+	params->unsign = 1;
+	return (print_number(convert(longLen, 10, CONVERT_UNSIGNED, params), params));
 }
+
 
 
 /**
  * print_address - function prints address
- * @az: the pointer argument
+ * @ap: the pointer argument
  * @params: the parameters
  * Return: printed bytes
  */
-int print_address(va_list az, params_t *params)
+int print_address(va_list ap, params_t *params)
 {
-	unsigned long int number = va_arg(az, unsigned long int);
+	unsigned long int number = va_arg(ap, unsigned long int);
 	char *string;
 
 	if (!number)
