@@ -46,9 +46,9 @@ int print_unsigned(va_list az, params_t *params)
 {
 	unsigned long x;
 
-	if (params->j_modifier)
+	if (params->l_modifier)
 		x = (unsigned long)va_arg(az, unsigned long);
-	else if (params->g_modifier)
+	else if (params->h_modifier)
 		x = (unsigned short int)va_arg(az, unsigned int);
 	else
 		x = (unsigned int)va_arg(az, unsigned int);
