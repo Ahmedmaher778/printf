@@ -76,7 +76,7 @@ int print_number_right_shift(char *str, params_t *params)
 	if (params->z_flag && !params->m_flag)
 		pad_char = '0';
 	neg = neg2 = (!params->unsgn && *str == '-');
-	if (neg && i < params->wid && pad_char == '0' && !params->m_flag)
+	if (neg && i < params->width && pad_char == '0' && !params->m_flag)
 		str++;
 	else
 		neg = 0;
@@ -90,7 +90,7 @@ int print_number_right_shift(char *str, params_t *params)
 	else if (!params->pl_flag && params->sp_flag && !neg2 &&
 		!params->unsgn && params->z_flag)
 		v += _putchar(' ');
-	while (i++ < params->wid)
+	while (i++ < params->width)
 		v += _putchar(pad_char);
 	if (neg && pad_char == ' ')
 		v += _putchar('-');
@@ -98,7 +98,7 @@ int print_number_right_shift(char *str, params_t *params)
 		v += _putchar('+');
 	else if (!params->pl_flag && params->sp_flag && !neg2 &&
 		!params->unsgn && !params->z_flag)
-		n += _putchar(' ');
+		v += _putchar(' ');
 	v += _puts(str);
 	return (v);
 }
@@ -119,7 +119,7 @@ int print_number_left_shift(char *str, params_t *params)
 	if (params->z_flag && !params->m_flag)
 		pad_char = '0';
 	neg = neg2 = (!params->unsgn && *str == '-');
-	if (neg && i < params->wid && pad_char == '0' && !params->m_flag)
+	if (neg && i < params->width && pad_char == '0' && !params->m_flag)
 		str++;
 	else
 		neg = 0;
@@ -129,7 +129,7 @@ int print_number_left_shift(char *str, params_t *params)
 	else if (params->sp_flag && !neg2 && !params->unsgn)
 		v += _putchar(' '), i++;
 	v += _puts(str);
-	while (i++ < params->wid)
+	while (i++ < params->width)
 		v += _putchar(pad_char);
 	return (v);
 }
