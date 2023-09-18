@@ -9,7 +9,7 @@
 int print_hex(va_list ap, params_t *params)
 {
 	unsigned long longLen;
-	int y = 0;
+	int c = 0;
 	char *string;
 
 	if (params->l_modifier)
@@ -26,7 +26,7 @@ int print_hex(va_list ap, params_t *params)
 		*--string = '0';
 	}
 	params->unsign = 1;
-	return (y += print_number(string, params));
+	return (c += print_number(string, params));
 }
 
 /**
@@ -38,7 +38,7 @@ int print_hex(va_list ap, params_t *params)
 int print_HEX(va_list ap, params_t *params)
 {
 	unsigned long longLen;
-	int x = 0;
+	int c = 0;
 	char *string;
 
 	if (params->l_modifier)
@@ -67,12 +67,12 @@ int print_binary(va_list ap, params_t *params)
 {
 	unsigned int num = va_arg(ap, unsigned int);
 	char *string = convert(num, 2, CONVERT_UNSIGNED, params);
-	int x = 0;
+	int c = 0;
 
 	if (params->hashtag_flag && num)
 		*--string = '0';
 	params->unsign = 1;
-	return (x += print_number(string, params));
+	return (c += print_number(string, params));
 }
 
 /**
@@ -85,7 +85,7 @@ int print_octal(va_list ap, params_t *params)
 {
 	unsigned long longLen;
 	char *string;
-	int x = 0;
+	int c = 0;
 
 	if (params->l_modifier)
 		longLen = (unsigned long)va_arg(ap, unsigned long);
@@ -98,6 +98,5 @@ int print_octal(va_list ap, params_t *params)
 	if (params->hashtag_flag && longLen)
 		*--string = '0';
 	params->unsign = 1;
-	return (x += print_number(string, params));
+	return (c += print_number(string, params));
 }
-
