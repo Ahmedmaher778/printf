@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * _isdigit - checks if character is digit
- * @c: the character to check
- * Return: 1 if digit, 0 otherwise
+ * _isdigit - checks if character is digit.
+ * @c: the character to check.
+ * Return: 1 if digit, 0 otherwise.
 */
 
 int _isdigit(int c)
@@ -12,25 +12,25 @@ int _isdigit(int c)
 }
 
 /**
- * _strlen - returns the length of a string
- * @s: string whose length to check
- * Return: integer length of string
+ * _strlen - returns the length of a string.
+ * @s: string whose length to check.
+ * Return: integer length of string.
 */
 
 int _strlen(char *s)
 {
-	int i = 0;
+	int k = 0;
 
 	while (*s++)
-		i++;
-	return (i);
+		k++;
+	return (k);
 }
 
 /**
- * print_number - prints number with options
- * @str: base number as string
- * @params: parameter struct
- * Return: chars printed
+ * print_number - prints number with options.
+ * @str: base number as string.
+ * @params: parameter struct.
+ * Return: chars printed.
 */
 
 int print_number(char *str, params_t *params)
@@ -58,10 +58,10 @@ int print_number(char *str, params_t *params)
 }
 
 /**
- * print_number_right_shift - prints number with options
- * @str: base number as a string
- * @params: parameter struct
- * Return: chars printed
+ * print_number_right_shift - prints number with options.
+ * @str: base number as a string.
+ * @params: parameter struct.
+ * Return: chars printed.
 */
 
 int print_number_right_shift(char *str, params_t *params)
@@ -100,10 +100,10 @@ int print_number_right_shift(char *str, params_t *params)
 }
 
 /**
- * print_number_left_shift - prints number with options
- * @str: base number as a string
- * @params: parameter struct
- * Return: chars printed
+ * print_number_left_shift - prints number with options.
+ * @str: base number as a string.
+ * @params: parameter struct.
+ * Return: chars printed.
 */
 
 int print_number_left_shift(char *str, params_t *params)
