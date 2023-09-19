@@ -2,7 +2,7 @@
 
 /**
  * get_precision - function to get the precision
- * @b: string
+ * @p: string
  * @params: parameters
  * @ap: the argument pointer
  * Return: a pointer
