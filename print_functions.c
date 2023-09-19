@@ -28,15 +28,15 @@ int print_char(va_list ap, params_t *params)
  */
 int print_int(va_list ap, params_t *params)
 {
-	long longLen;
+	long len;
 
 	if (params->l_modifier)
-		longLen = va_arg(ap, long);
+		len = va_arg(ap, long);
 	else if (params->h_modifier)
-		longLen = (short int)va_arg(ap, int);
+		len = (short int)va_arg(ap, int);
 	else
-		longLen = (int)va_arg(ap, int);
-	return (print_number(convert(longLen, 10, 0, params), params));
+		len = (int)va_arg(ap, int);
+	return (print_number(convert(l, 10, 0, params), params));
 }
 
 /**
@@ -47,38 +47,39 @@ int print_int(va_list ap, params_t *params)
  */
 int print_string(va_list ap, params_t *params)
 {
-	char *str = va_arg(ap, char *), pad_character = ' ';
-	unsigned int pad = 0, summation = 0, x = 0, y;
+	char *string = va_arg(ap, char *), pad_char = ' ';
+	unsigned int pad = 0, summation = 0, i = 0, x;
 
 	(void)params;
-	switch ((int)(!*str))
+	switch ((int)(!string))
 		case 1:
-			*str = NULL_STRING;
+			string = NULL_STRING;
 
-	y = pad = _strlen(*str);
+	x = pad = _strlen(string);
 	if (params->precision < pad)
-		y = pad = params->precision;
+		x = pad = params->precision;
 
 	if (params->minus_flag)
 	{
 		if (params->precision != UINT_MAX)
-			for (x = 0; x < pad; x++)
-				summation += _putchar(*str++);
+			for (i = 0; i < pad; i++)
+				summation += _putchar(*string++);
 		else
-			summation += _puts(*str);
+			summation += _puts(string);
 	}
-	while (y++ < params->width)
-		summation += _putchar(pad_character);
+	while (x++ < params->width)
+		summation += _putchar(pad_char);
 	if (!params->minus_flag)
 	{
 		if (params->precision != UINT_MAX)
-			for (x = 0; x < pad; x++)
-				summation += _putchar(*str++);
+			for (i = 0; i < pad; i++)
+				summation += _putchar(*string++);
 		else
-			summation += _puts(*str);
+			summation += _puts(string);
 	}
 	return (summation);
 }
+
 
 /**
  * print_percent - the prints string
@@ -101,26 +102,26 @@ int print_percent(va_list ap, params_t *params)
  */
 int print_S(va_list ap, params_t *params)
 {
-	char *str = va_arg(ap, char *);
+	char *string = va_arg(ap, char *);
 	char *hex;
 	int summation = 0;
 
 	if ((int)(!string))
 		return (_puts(NULL_STRING));
-	for (; *str; string++)
+	for (; *string; string++)
 	{
-		if ((*str > 0 && *str < 32) || *str >= 127)
+		if ((*string > 0 && *string < 32) || *string >= 127)
 		{
 			summation += _putchar('\\');
 			summation += _putchar('x');
-			hex = convert(*str, 16, 0, params);
+			hex = convert(*string, 16, 0, params);
 			if (!hex[1])
 				summation += _putchar('0');
 			summation += _puts(hex);
 		}
 		else
 		{
-			summation += _putchar(*str);
+			summation += _putchar(*string);
 		}
 	}
 	return (summation);
