@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_unsigned - function prints integer unsigned numbers
+ * convert - function prints integer unsigned numbers
  * @ap: pointer argument
  * @params: the parameters
  * Return: printed bytes
