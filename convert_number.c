@@ -58,7 +58,7 @@ int print_HEX(va_list ap, params_t *params)
 	return (x += print_number(string, params));
 }
 /**
- * print_octal - function prints numbers in unsigned octal
+ * print_binary - function prints numbers in unsigned octal
  * @ap: the pointer argument
  * @params: the parameters
  * Return: the printed bytes
