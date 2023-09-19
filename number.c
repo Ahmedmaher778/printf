@@ -1,9 +1,11 @@
 #include "main.h"
 
 /**
- * print_unsigned - function prints integer unsigned numbers
- * @ap: pointer argument
- * @params: the parameters
+ * convert - function prints integer unsigned numbers
+ * @num: the number
+ * @base: the base
+ * @flags: the flags argument
+ * @params: the paramater
  * Return: printed bytes
  */
 char *convert(long int num, int base, int flags, params_t *params)
